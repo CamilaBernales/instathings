@@ -3,13 +3,13 @@ import Layout from '../components/layout/Layout';
 
 
 
-const Home = () => {
+const NewProduct = () => {
   return (
       <div>
           <Layout>
-              <h1>Inicio</h1>
+              <h1>new</h1>
           </Layout>
       </div>
   )
 };
-export default Home;
+export default NewProduct;
