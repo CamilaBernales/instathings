@@ -11,6 +11,11 @@ const Product = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e1e1e1;
+  @media (min-width: 768px) {
+    width:100vh;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 2rem;
 `;
 const Description = styled.div`
   flex: 0 1 600px;
@@ -26,16 +31,16 @@ const Comments = styled.div`
     display: flex;
     align-items: center;
     border: 1px solid #e1e1e1;
-    padding: 0.3rem 1rem;
+    padding: 1rem 3rem;
     margin-right: 2rem;
   }
   img {
     width: 2rem;
-    margin-right: 2rem;
+    margin-right: 1rem;
   }
   p {
-    font-size: 1.6rem;
-    margin-right: 1rem;
+    font-size: 2vh;
+    margin-right: 0.4rem;
     font-weight: 700;
     &:last-of-type {
       margin: 0;

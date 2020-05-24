@@ -13,7 +13,9 @@ const ContenedorHeader = styled.div`
   margin: 0 auto;
   @media (min-width: 768px) {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+   }
   }
 `;
 
@@ -40,15 +42,16 @@ const Header = () => {
           css={css`
             display: flex;
             align-items: center;
+          }
           `}
         >
           <Link href="/">
-            <Logo>InstaThings</Logo>
+            <Logo>IT</Logo>
           </Link>
 
-          <Buscar/>
+          <Buscar />
         </div>
-          <Navbar />
+        <Navbar />
 
         <div
           css={css`
@@ -71,12 +74,20 @@ const Header = () => {
             </>
           ) : (
             <>
+              <div
+                css={css`
+                 display:flex;
+                 justify-content: center;
+                 margin: 0 auto;
+                `}
+              >
               <Link href="/login">
                 <Boton bgColor="true">Login</Boton>
               </Link>
-              <Link href="/sign-up">
-                <Boton>Sing Up</Boton>
-              </Link>
+                <Link href="/sign-up">
+                  <Boton>Sing Up</Boton>
+                </Link>
+              </div>
             </>
           )}
         </div>

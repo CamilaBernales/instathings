@@ -8,9 +8,6 @@ border: 1px solid var(--gris3);
 padding: 1rem;
 width: 300px;
 
-@media only screen and (max-height: 1024px) and (max-width: 768px)  {
-    width: 27vh;
-}
 `;
 const InputSubmit = styled.button`
 height: 3rem;
