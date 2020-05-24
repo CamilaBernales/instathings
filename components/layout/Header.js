@@ -43,7 +43,7 @@ const Header = () => {
           `}
         >
           <Link href="/">
-            <Logo>Next</Logo>
+            <Logo>InstaThings</Logo>
           </Link>
 
           <Buscar/>

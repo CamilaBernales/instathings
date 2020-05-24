@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-
+import Link from 'next/link'
 const Image = styled.img`
   width: 200px;
 `;
@@ -75,7 +75,6 @@ const DescriptionText = styled.p`
   color: #888;
 `;
 const ProductDetails = ({ product }) => {
-  console.log(product);
   const {
     id,
     comments,
@@ -94,7 +93,9 @@ const ProductDetails = ({ product }) => {
           <Image src={urlImage} />
         </div>
         <div>
+          <Link href="/products/[id]" as={`/products/${id}`}>
           <Title>{name}</Title>
+          </Link>
           <DescriptionText>{description}</DescriptionText>
           <Comments>
             <div>

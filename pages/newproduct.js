@@ -51,6 +51,11 @@ const NewProduct = () => {
       votes: 0,
       comments: [],
       creado: Date.now(),
+      author:{
+        id: user.uid,
+        name: user.displayName
+      },
+      votedby:[]
     };
     firebase.db.collection("products").add(product);
     return router.push('/');
@@ -96,11 +101,11 @@ const NewProduct = () => {
               <legend>General</legend>
 
               <Div>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Product Name</label>
                 <input
                   type="text"
                   id="name"
-                  placeholder="Name"
+                  placeholder="Product Name"
                   name="name"
                   value={name}
                   onChange={handleChange}
@@ -166,7 +171,7 @@ const NewProduct = () => {
                   onBlur={handleBlur}
                 />
               </Div>
-              {errors.url ? <Error>{errors.url}</Error> : null}
+              {errors.description ? <Error>{errors.description}</Error> : null}
             </fieldset>
             {error ? <Error>{error}</Error> : null}
             <InputSubmit type="submit" value="ADD!" />
