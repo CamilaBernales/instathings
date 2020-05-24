@@ -35,10 +35,10 @@ const AuthorProduct = styled.p`
 const Product = () => {
   const [product, setProduct] = useState({});
   const [error, setError] = useState(false);
-  const router = useRouter();
   const [comment, setComment] = useState({});
   const [fetchDB, setFetchDB] = useState(true);
-
+  
+  const router = useRouter();
   const {
     query: { id },
   } = router;
@@ -50,7 +50,6 @@ const Product = () => {
       const getProduct = async () => {
         const productQuery = await firebase.db.collection("products").doc(id);
         const product = await productQuery.get();
-        setProduct(product.data());
         if (product.exists) {
           setProduct(product.data());
           setFetchDB(false);
@@ -58,7 +57,7 @@ const Product = () => {
           setError(true);
           setFetchDB(false);
         }
-      };
+      }
       getProduct();
     }
   }, [id]);
@@ -104,12 +103,11 @@ const Product = () => {
     setFetchDB(true); //fetch new votes
   };
 
-  const commentChange = (e) => {
+  const commentChange = e => {
     setComment({
       ...comment,
       [e.target.name]: e.target.value,
     });
-    setFetchDB(true); //fecth new comments
   };
 
   const isAuthor = (id) => {
@@ -121,19 +119,19 @@ const Product = () => {
   const addComment = (e) => {
     e.preventDefault();
     if (!user) {
-      return router.push("/");
+      return router.push("/login");
     }
     comment.userId = user.uid;
     comment.userName = user.displayName;
 
     const newComment = [...comments, comment];
-    firebase.db.collection("products").doc(id).update({
-      comments: newComment,
-    });
-    setComment({
+    firebase.db.collection('products').doc(id).update({ comments: newComment });
+
+    setProduct({
       ...product,
       comments: newComment,
     });
+    setFetchDB(true);
   };
 
   const canDelete = () => {
@@ -182,7 +180,7 @@ const Product = () => {
                 </p>
                 <img src={urlImage} />
                 <p>{description}</p>
-                {user ? (
+                {user && (
                   <>
                     <h2>Add a comment</h2>
                     <form onSubmit={addComment}>
@@ -196,7 +194,7 @@ const Product = () => {
                       <InputSubmit type="submit" value="Send" />
                     </form>
                   </>
-                ) : null}
+                )}
                 <h2
                   css={css`
                     margin: 2rem 0;
@@ -204,34 +202,35 @@ const Product = () => {
                 >
                   Comments
                 </h2>
-                {comments.length === 0 ? <h3>No comment yet</h3> : (
-                <ul>
-                  {comments.map((comment, i) => (
-                    <li
-                      key={`${comment.userId}-${i}`}
-                      css={css`
-                        border: 1px solid #e1e1e1;
-                        padding: 2rem;
-                      `}
-                    >
-                      <p>{comment.message}</p>
-                      <p>
-                        {" "}
-                        By:
-                        <span
-                          css={css`
-                            font-weight: bold;
-                          `}
-                        >
-                          {""} {comment.userName}
-                        </span>
-                      </p>
-                      {isAuthor(comment.userId) && (
-                        <AuthorProduct>Author</AuthorProduct>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                {comments.length === 0 ? (
+                  "Aún no hay comentarios"
+                ) : (
+                  <ul>
+                    {comments.map((comment, i) => (
+                      <li
+                        key={`${comment.userId}-${i}`}
+                        css={css`
+                          border: 1px solid #e1e1e1;
+                          padding: 2rem;
+                        `}
+                      >
+                        <p>{comment.message}</p>
+                        <p>
+                          By:
+                          <span
+                            css={css`
+                              font-weight: bold;
+                            `}
+                          >
+                            {""} {comment.userName}
+                          </span>
+                        </p>
+                        {isAuthor(comment.userId) && (
+                          <AuthorProduct>Author</AuthorProduct>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
               <aside>

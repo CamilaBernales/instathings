@@ -56,7 +56,8 @@ const NewProduct = () => {
         name: user.displayName
       },
       votedby:[]
-    };
+    }
+    
     firebase.db.collection("products").add(product);
     return router.push('/');
   }

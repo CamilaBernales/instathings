@@ -3,6 +3,7 @@ import firebaseConfig from './config';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage'
+
 class Firebase{
 
     constructor(){
