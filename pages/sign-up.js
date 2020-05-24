@@ -1,35 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
+import Router from 'next/router'
 import { css } from "@emotion/core";
 import Layout from "../components/layout/Layout";
 import { Form, Div, InputSubmit, Error } from "../components/ui/Form";
-import firebase from '../firebase'
+import firebase from "../firebase";
 //validaciones
 import useValidation from "../hooks/useValidation";
 import validateSignUp from "../validation/validateSignUp";
+
+
+const STATE_INITIAL = {
+  name: "",
+  email: "",
+  password: "",
+};
+
 const SignUp = () => {
-  const STATE_INITIAL = {
-    name: "",
-    email: "",
-    password: "",
-  };
+  
+  const [error, setError] = useState(false);
   const {
     values,
     errors,
     handleChange,
     handleSubmit,
-    handleBlur
+    handleBlur,
   } = useValidation(STATE_INITIAL, validateSignUp, createAccount);
-
   const { name, email, password } = values;
 
+
   async function createAccount() {
-
-
     try {
-      await  firebase.signup(name, email, password);
-
+      await firebase.signup(name, email, password);
+      Router.push('/');
     } catch (error) {
-      console.error("Hubo un error", error.message);
+      setError(error.message);
     }
   }
   return (
@@ -44,8 +48,7 @@ const SignUp = () => {
           >
             Sing Up
           </h1>
-          <Form onSubmit={handleSubmit}
-          noValidate>
+          <Form onSubmit={handleSubmit} noValidate>
             <Div>
               <label htmlFor="name">Name</label>
               <input
@@ -59,7 +62,7 @@ const SignUp = () => {
               />
             </Div>
 
-              {errors.name ? <Error>{errors.name}</Error> : null}
+            {errors.name ? <Error>{errors.name}</Error> : null}
             <Div>
               <label htmlFor="email">Email</label>
               <input
@@ -70,7 +73,6 @@ const SignUp = () => {
                 onChange={handleChange}
                 value={email}
                 onBlur={handleBlur}
-
               />
             </Div>
             {errors.email ? <Error>{errors.email}</Error> : null}
@@ -85,11 +87,10 @@ const SignUp = () => {
                 value={password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-
               />
             </Div>
             {errors.password ? <Error>{errors.password}</Error> : null}
-
+            {error ? <Error>{error}</Error> : null}
             <InputSubmit type="submit" value="Create Account" />
           </Form>
         </>

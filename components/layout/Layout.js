@@ -2,7 +2,6 @@ import React from "react";
 import Header from "./Header";
 import { Global, css } from "@emotion/core";
 import Head from "next/head";
-
 const Layout = (props) => {
   return (
     <>
@@ -11,48 +10,48 @@ const Layout = (props) => {
           // custom properties
           :root {
             --gris: #3d3d3d;
-            --gris2: #6f6f6f;
+            --gris2: #6F6F6F;
             --gris3: #e1e1e1;
-          }
-          html {
+        }
+
+        html {
+
             font-size: 62.5%;
             box-sizing: border-box;
-          }
-          *,
-          *:before,
-          *:after {
+        }
+        *, *:before, *:after {
             box-sizing: inherit;
-          }
-          body {
-            font-size: 1.6rem;
+        }
+        body {
+            font-size: 1.6rem; 
             line-height: 1.5;
             font-family: 'Roboto', sans-serif;
-          }
-          h1,
-          h2,
-          h3 {
+        }
+        h1, h2, h3 {
             margin: 0 0 2rem 0;
             line-height: 1.5;
-          }
-          h1,h2{
-              font-family: 'Roboto Slab', serif;
-              font-weight: 700;
-          }
-          h3{
-              font-family: 'Roboto', sans-serif;
-          }
-          ul {
+        }
+        h1, h2 {
+            font-family: 'Roboto Slab', serif;
+            font-weight: 700;
+        }
+        h3 {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        ul {
             list-style: none;
             margin: 0;
-            padding: 0;
-          }
-          a {
+            padding:0;
+        }
+        a {
             text-decoration: none;
-          }
+        }
+
         `}
       />
       <Head>
-        <html land="es" />
+        <html land="en" />
         <title>Product Hunt Clone</title>
         <link
           rel="stylesheet"
@@ -64,7 +63,7 @@ const Layout = (props) => {
           href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@400;700&display=swap"
           rel="stylesheet"
         />
-        <link href="/static/css/app.css" rel="stylesheet"/>
+        <link href="../../static/css/app.css" rel="stylesheet"/>
       </Head>
       <Header />
       <main>{props.children}</main>

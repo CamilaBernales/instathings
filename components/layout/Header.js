@@ -1,30 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import Buscar from "../ui/Buscar";
 import Navbar from "./Navbar";
 import Boton from "../ui/Boton";
-const Header = () => {
-  const ContenedorHeader = styled.div`
-    max-width: 1200px;
-    width: 95%;
-    margin: 0 auto;
-    @media (min-width: 768px) {
-      display: flex;
-      justify-content: space-between;
-    }
-  `;
-  const Logo = styled.a`
-    color: #7c3c21;
-    font-size: 4rem;
-    line-height: 0;
-    font-weight: 700;
-    font-family: "Roboto Slab", serif;
-    margin-right: 2rem;
-  `;
+import { FirebaseContext } from "../../firebase";
 
-  const usuario = false;
+const ContenedorHeader = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+const Logo = styled.a`
+  color: #7c3c21;
+  font-size: 4rem;
+  line-height: 0;
+  font-weight: 700;
+  font-family: "Roboto Slab", serif;
+  margin-right: 2rem;
+`;
+const Header = () => {
+  const { user, firebase } = useContext(FirebaseContext);
+
   return (
     <header
       css={css`
@@ -43,9 +46,9 @@ const Header = () => {
             <Logo>Next</Logo>
           </Link>
 
-          <Buscar />
-          <Navbar />
+          <Buscar/>
         </div>
+          <Navbar />
 
         <div
           css={css`
@@ -53,16 +56,18 @@ const Header = () => {
             align-items: center;
           `}
         >
-          {usuario ? (
+          {user ? (
             <>
               <p
                 css={css`
                   margin-right: 2rem;
                 `}
               >
-                Hola: Camila{" "}
+                Hi:{user.displayName}
               </p>
-              <Boton bgColor="true">Log Up</Boton>
+              <Boton bgColor="true" onClick={() => firebase.logout()}>
+                Log Out
+              </Boton>
             </>
           ) : (
             <>

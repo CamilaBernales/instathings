@@ -1,12 +1,12 @@
-.listado-productos {
+.product-list {
     background-color: #f3f3f3;
 }
-.contenedor {
+.container {
     max-width: 1200px;
     width: 95%;
     padding: 5rem 0;
     margin: 0 auto;
 }
 .bg-white {
-    background-color: #FFF;
+    background-color: #fff;
 }
