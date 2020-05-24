@@ -1,5 +1,5 @@
 
-DEMO : https://out-fawn-ten.now.sh/
+DEMO : https://instathingsnext.netlify.app/
 
 This website allows you to register as a user, upload a product for other users to see, vote for and leave a comment!
 
