@@ -204,7 +204,7 @@ const Product = () => {
                 >
                   Comments
                 </h2>
-                {comments.length === 0 ? <h3>No comment yet</h3> : null}
+                {comments.length === 0 ? <h3>No comment yet</h3> : (
                 <ul>
                   {comments.map((comment, i) => (
                     <li
@@ -232,6 +232,7 @@ const Product = () => {
                     </li>
                   ))}
                 </ul>
+                )}
               </div>
               <aside>
                 <Boton target="_blank" bgColor="true" href={url}>
