@@ -8,7 +8,6 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top:3rem;
   a {
     font-size: 1.8rem;
     margin-left: 2rem;
@@ -18,6 +17,10 @@ const Nav = styled.nav`
     &:last-of-type {
       margin-right: 0;
     }
+  }
+
+  @media (max-width: 768px){
+    margin-top: 3rem;
   }
 `;
 
