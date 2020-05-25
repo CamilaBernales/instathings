@@ -26,6 +26,7 @@ const Logo = styled.a`
   font-weight: 700;
   font-family: "Roboto Slab", serif;
   margin-right: 2rem;
+  margin-left: 1.3rem;
 `;
 const Header = () => {
   const { user, firebase } = useContext(FirebaseContext);

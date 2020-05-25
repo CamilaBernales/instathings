@@ -11,22 +11,18 @@ const Product = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e1e1e1;
-  @media (min-width: 768px) {
-    width:100vh;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    column-gap: 2rem;
+
 `;
 const Description = styled.div`
-  flex: 0 1 600px;
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  column-gap: 3rem;
+  font-size: 1.6rem;
+  margin: 0;
+  color: #888;
 `;
 const Comments = styled.div`
   margin-top: 2rem;
   display: flex;
   align-items: center;
+  margin-buttom: 40px;
   div {
     display: flex;
     align-items: center;
@@ -48,7 +44,6 @@ const Comments = styled.div`
   }
 `;
 const Votes = styled.div`
-  flex: 0 0 auto;
   text-align: center;
   border: 1px solid #e1e1e1;
   padding: 1rem 3rem;
@@ -61,6 +56,21 @@ const Votes = styled.div`
     margin: 0;
     font-size: 2rem;
     font-weight: 700;
+  }
+
+  @media (max-width: 768px){
+    display: flex;
+    margin-left:2.3rem;
+    font-size: 0.5rem;
+    div {
+      font-size: 1.3rem;
+      }
+    p {
+      margin-left: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
   }
 `;
 
@@ -75,6 +85,9 @@ const Title = styled.a`
 `;
 
 const DescriptionText = styled.p`
+  diplay: flex;
+  align-items:center;
+  justify-content:center
   font-size: 1.6rem;
   margin: 0;
   color: #888;
@@ -113,7 +126,7 @@ const ProductDetails = ({ product }) => {
       </Description>
       <Votes>
         <div>&#9650;</div>
-        <div>{votes}</div>
+        <p>{votes}</p>
       </Votes>
     </Product>
   );

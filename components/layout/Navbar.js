@@ -8,6 +8,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top:3rem;
   a {
     font-size: 1.8rem;
     margin-left: 2rem;
