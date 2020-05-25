@@ -1,5 +1,5 @@
 
-DEMO : https://instathingsnext.netlify.app/
+DEMO : https://next-project.camilabernales.now.sh/
 
 This website allows you to register as a user, upload a product for other users to see, vote for and leave a comment!
 
