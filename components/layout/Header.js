@@ -85,7 +85,7 @@ const Header = () => {
                 <Boton bgColor="true">Login</Boton>
               </Link>
                 <Link href="/sign-up">
-                  <Boton>Sing Up</Boton>
+                  <Boton>Sign Up</Boton>
                 </Link>
               </div>
             </>

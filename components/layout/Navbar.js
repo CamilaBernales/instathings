@@ -7,6 +7,7 @@ const Nav = styled.nav`
   padding: 2rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   a {
     font-size: 1.8rem;
     margin-left: 2rem;
