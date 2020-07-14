@@ -1,8 +1,7 @@
-
 DEMO : https://instathings.now.sh/
 
 This website allows you to register as a user, upload a product for other users to see, vote for and leave a comment!
-
+<img src="instathings.png" alt="project"/>
 Starting 🚀
 
 In your terminal
